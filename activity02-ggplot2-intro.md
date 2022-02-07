@@ -246,12 +246,20 @@ aesthetics mapped in the different layers. For example, how does having
 all of them mapped in the `ggplot` call compared to having these instead
 mapped in the `geom_boxplot` layer?
 
-ggplot(data = penguins, mapping = aes(x = flipper\_length\_mm, y =
-species)) + geom\_boxplot(mapping( ies)aes(color = species))
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot(mapping = aes(color = species)) + geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 Comment on what you notice.
 
-**Response**:
+**Response**: I can choose where I want the color to go.
 
 Knit, then stage everything listed in your **Git** pane, commit (with a
 meaningful commit message), and push to your GitHub repo. Go to GitHub

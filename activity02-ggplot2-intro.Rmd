@@ -194,12 +194,16 @@ ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
 In the above code chunk, continue to play around with having the aesthetics mapped in the different layers.
 For example, how does having all of them mapped in the `ggplot` call compared to having these instead mapped in the `geom_boxplot` layer?
 
+```{r}
 ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
-  geom_boxplot(mapping( ies)aes(color = species))
+  geom_boxplot(mapping = aes(color = species)) + geom_jitter()
+
+```
+
 
 Comment on what you notice.
 
-**Response**:
+**Response**: I can choose where I want the color to go.
 
 
 Knit, then stage everything listed in your **Git** pane, commit (with a meaningful commit message), and push  to your GitHub repo.
@@ -222,19 +226,24 @@ Using these three graphs to discuss which of these three categorical variables s
 
 ```{r bill_length_by_species}
 
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = species)) +
+  geom_boxplot()+  geom_jitter(mapping = aes(color = species))
+
 ```
 
 
 ```{r bill_length_by_sex}
-
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = sex)) +
+  geom_boxplot()+  geom_jitter(mapping = aes(color = sex))
 ```
 
 
 ```{r bill_length_by_island}
-
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = island)) +
+  geom_boxplot()+  geom_jitter(mapping = aes(color = island))
 ```
 
-**Response**:
+**Response**: I think it would be species because the Adelie and Chinstrap penguins seem to have a higher bill length than Gentoo.
 
 
 
@@ -250,34 +259,39 @@ In the code chunk below, create a scatterplot for the relationship between `flip
 
 ```{r flipper_vs_mass}
 
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
 ```
 
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: There is a positive association. There also seems to be cluster of vertical lines at various flipper lengths.
 
 
 Recreate your scatterplot in the code chunk below; however,  *map* `species` to the `color` and `shape` aesthetics.
 
 ```{r flipper_vs_mass_with_species}
-
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+    geom_point(mapping = aes(color = species, shape = species))
 ```
 
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: The Adelie and Chinstrap penguin overlap almost completely, but the Gentoo have a higher body mass and flipper length.
 
 
 The previous plot looked great except even in this rather small dataset (n = 344), there might are a number of points overlapping.
 In the R code chunk below, *set* the values (instead of mapping a variable to an aesthetic) of `size` (using some value larger than zero) and `alpha` (using some value between 0 and 1) to make your previous plot more effective.
 
 ```{r flipper_vs_mass_with_size_alpha}
-
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+    geom_point(mapping = aes(color = species, shape = species, size = 0.9, alpha = 0.9))
 ```
 
 Discuss the decisions you made to help your plot be easier to read.
 
-**Response**:
+**Response**: Size makes each point easier to see and putting apha on it makes it easier to see the points below.
 
 
 
